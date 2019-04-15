@@ -10,9 +10,11 @@
                                 </div>
                                 <div class="logo">
                                     <div class="image">
-                                        <a href="">
-                                            <img src="../assets/logo.png" alt="">
-                                        </a>
+                                        <router-link to="/">
+                                            <a href="">
+                                                <img src="../assets/logo.png" alt="">
+                                            </a>
+                                        </router-link>
                                     </div>
                                     <h1 class="title">
                                         <a>
@@ -45,29 +47,43 @@
                             <div class="mainnav" id="mainnav">
                                 <div class="usermenu">
                                     <div class="links">
-                                        <a>登录</a>
+                                        <router-link :to="{name:'Login'}">
+                                            <a>登录</a>
+                                        </router-link>
                                         <span>/</span>
-                                        <a>注册</a>
+                                        <router-link :to="{name:'Regist'}">
+                                            <a>注册</a>
+                                        </router-link>
                                     </div>
                                     <div class="mainnav-offer icon hidden-md hidden-lg" id="mainnav-offer" data-target="#mainnav">
                                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                                     </div>
                                 </div>
                                 <ul class="list-inline navmenu nav justify-content-left">
-                                    <li class="active">
-                                        <a>Home</a>
+                                    <li>
+                                        <router-link to="/">
+                                            <a>Home</a>
+                                        </router-link>
                                     </li>
                                     <li>
-                                        <a>教学</a>
+                                        <router-link :to="{name:'section',query:{id:1}}">
+                                            <a>Backend</a>
+                                        </router-link>
                                     </li>
                                     <li>
-                                        <a>Frontend</a>
+                                        <router-link :to="{name:'section',query:{id:2}}">
+                                            <a>Frontend</a>
+                                        </router-link>
                                     </li>
                                     <li>
-                                        <a>Database</a>
+                                        <router-link :to="{name:'section',query:{id:3}}">
+                                            <a> Database </a>
+                                        </router-link>
                                     </li>
                                     <li>
-                                        <a>UI</a>
+                                        <router-link :to="{name:'section',query:{id:4}}">
+                                            <a>UI</a>
+                                        </router-link>
                                     </li>
                                 </ul>
                             </div>
@@ -77,6 +93,7 @@
             </div>
         </div>
 </template>
+
 
 <style>
 @import '../../public/css/style.css'

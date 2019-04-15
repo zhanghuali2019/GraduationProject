@@ -1,7 +1,10 @@
 <template>
   <div id="app">
     <Nav></Nav>
-    <Block></Block>
+    <div>
+        <router-view></router-view>
+    </div>
+    <Footer></Footer>
   </div>
 </template>
 
@@ -9,11 +12,13 @@
 
 import Nav from './components/navgation.vue'
 import Block from './components/block.vue'
+import Footer from './components/footer.vue'
 export default {
   name: 'app',
   components: {
     Nav,
-    Block
+    Block,
+    Footer
   }
 }
 </script>
@@ -26,4 +31,5 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
+
 </style>
