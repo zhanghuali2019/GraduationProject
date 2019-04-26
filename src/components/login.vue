@@ -59,7 +59,6 @@
                             </div>
                         </div>
                     </div>
-                    
                 </div>
             </div>
         </div>
@@ -68,27 +67,42 @@
 <script>
 import store from '../store/index.js'
 export default{
+    data(){
+        return{
+            message: '',
+            type: ''
+        }
+    },
     methods: {
         login:function(){
+            var _this = this
             var params = new URLSearchParams()
             params.append('username', this.$refs.username.value)
             params.append('password', this.$refs.password.value)
-            var _this = this;
             _this.axios.post('http://localhost/biyesheji/checklogin.php',params)
             .then(function(res){
-                _this.$store.commit('SET_TOKEN', res.data.is_login)
-                _this.$store.commit('GET_USER', res.data.username)
+                if(res.data.is_login){
+                    _this.type = 'success'
+                     _this.message = '登陆成功'
+                    _this.$store.commit('SET_TOKEN', res.data.is_login)
+                    _this.$store.commit('GET_USER', res.data.username)
+                } else {
+                    _this.type = 'error'
+                    if(res.data.message === '用户不存在')
+                        _this.message = '用户不存在,请先注册！'
+                    if(res.data.message === '密码错误')
+                        _this.message = '密码错误！'
+                }
+                _this.open();
             })
-            if(res.data.is_login){
-                _this.$router.push({path: '/'})
-            }
-        }
-        /*open2:function() {
-        this.$message({
-          message: '恭喜你，这是一条成功消息',
-          type: 'success'
+        },
+        open:function() {
+            var _this = this;
+        _this.$message({
+          message: _this.message,
+          type: _this.type
         });
-      },*/
+      },
     }
 }
 </script>
