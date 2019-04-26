@@ -5,7 +5,15 @@
         <div class="row">
           <div class="col-md-8">
             <div class="slider">
-              <img src="../assets/slide_1.jpg" alt="轮播图">
+              <template>
+              <el-carousel :interval="5000" arrow="hover" autoplay="true">
+                <el-carousel-item v-for="(item,index) in img" :key="index">
+                  <h3>
+                    <img :src="item" alt="轮播图">
+                  </h3>
+                </el-carousel-item>
+              </el-carousel>
+              </template>
             </div>
             <div class="primary">
               <div class="block">
@@ -20,7 +28,9 @@
                   </div>
                   <div class="col-lg-6">
                     <ul class="list">
-                      <li>Convert one date time format into another in PHP custom function</li>
+                      <router-link :to="{name:'Detail'}">
+                        <li>Convert one date time format into another in PHP custom function</li>
+                      </router-link>
                       <li>
                         <a>Best way to include config.php</a>
                       </li>
@@ -178,17 +188,29 @@
 
 <script>
 import New from "./new.vue";
+
 export default {
   name: "app",
   components: {
     New
+  },
+  data:function()
+  {
+    return {
+      img:[
+        require('../assets/slide_1.jpg'),
+        require('../assets/slide_2.jpg'),
+        require('../assets/slide_3.jpg'),
+        require('../assets/slide_4.jpg')
+      ]
+    }
   }
+ 
 };
 </script>
 
 <style>
 @import "../../public/css/style.css";
-
 ul {
   padding: 0;
   color: #ccc;
@@ -216,4 +238,20 @@ li:hover {
   color: #31b0d5;
   cursor: pointer;
 }
+
+ .el-carousel__item h3 {
+    color: #475669;
+    font-size: 18px;
+    opacity: 0.75;
+    line-height: 300px;
+    margin: 0;
+  }
+  
+  .el-carousel__item:nth-child(2n) {
+    background-color: #99a9bf;
+  }
+  
+  .el-carousel__item:nth-child(2n+1) {
+    background-color: #d3dce6;
+  }
 </style>

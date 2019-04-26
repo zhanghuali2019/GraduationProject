@@ -30,15 +30,15 @@
                                 <div class="postform">
                                     <h2>会员登录</h2>
                                     <hr>
-                                    <form action="checklogin.php" method="post">
+                                    <form>
                                         <div class="form-group">
                                             <label for="subject">用户名：</label>
-                                            <input type="text" class="form-control" id="username" name="username">
+                                            <input type="text" class="form-control" id="username" name="username" ref="username">
                                         </div>
 
                                         <div class="form-group">
                                             <label for="content">密码：</label>
-                                            <input type="password" class="form-control" id="password" name="password">
+                                            <input type="password" class="form-control" id="password" name="password" ref="password">
                                         </div>
 
                                         <!-- <div class="form-group row">
@@ -50,7 +50,7 @@
                                                 <img class="authcod_img" src="../static/pic/authcocd.jpg" alt="">
                                             </div>
                                         </div> -->
-                                        <button type="submit" class="btn btn-info">登录</button>
+                                        <button type="button" class="btn btn-info" @click="login">登录</button>
                                     </form>
                                 </div>
                             </div>
@@ -59,11 +59,43 @@
                             </div>
                         </div>
                     </div>
+                    
                 </div>
             </div>
         </div>
 </template>
 
+<script>
+import store from '../store/index.js'
+export default{
+    methods: {
+        login:function(){
+            var params = new URLSearchParams()
+            params.append('username', this.$refs.username.value)
+            params.append('password', this.$refs.password.value)
+            var _this = this;
+            _this.axios.post('http://localhost/biyesheji/checklogin.php',params)
+            .then(function(res){
+                _this.$store.commit('SET_TOKEN', res.data.is_login)
+                _this.$store.commit('GET_USER', res.data.username)
+            })
+            if(res.data.is_login){
+                _this.$router.push({path: '/'})
+            }
+        }
+        /*open2:function() {
+        this.$message({
+          message: '恭喜你，这是一条成功消息',
+          type: 'success'
+        });
+      },*/
+    }
+}
+</script>
+
 <style>
-@import "../../public/css/style.css"
+@import "../../public/css/style.css";
+a:hover{
+    cursor: pointer;
+}
 </style>

@@ -48,12 +48,14 @@
                                 <div class="usermenu">
                                     <div class="links">
                                         <router-link :to="{name:'Login'}">
-                                            <a>登录</a>
+                                            <a v-show="!token">登录</a>
                                         </router-link>
+                                        <a v-show="token">{{getUser}}</a>
                                         <span>/</span>
-                                        <router-link :to="{name:'Regist'}">
+                                        <router-link :to="{name:'Regist'}" v-show='!token'>
                                             <a>注册</a>
                                         </router-link>
+                                        <a v-show='token' @click="loginout">退出</a>
                                     </div>
                                     <div class="mainnav-offer icon hidden-md hidden-lg" id="mainnav-offer" data-target="#mainnav">
                                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
@@ -94,8 +96,45 @@
         </div>
 </template>
 
+<script>
+export default {
+   data(){
+       return {
+           token: this.$store.state.token,
+           user:  this.$store.state.user
+       }
+   },
+   methods:{
+       loginout:function(){
+            this.$store.commit('LOGOUT')
+        }
+   },
+   computed:{
+       getToken:function(){
+           return this.$store.state.token;
+       },
+       getUser:function(){
+           return this.$store.state.user
+       }
+   },
+   watch:{
+        getToken(val) {
+            this.token = val;
+        },
+        getUser(user) {
+            this.user = user;
+        }
+   }
+}
+</script>
 
 <style>
-@import '../../public/css/style.css'
-
+@import '../../public/css/style.css';
+a{
+    color:black !important;
+    text-decoration: none !important;
+}
+a:hover{
+    color:#5bc0de !important;
+}
 </style>
