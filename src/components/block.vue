@@ -31,21 +31,10 @@
                       <router-link :to="{name:'Detail'}">
                         <li>Convert one date time format into another in PHP custom function</li>
                       </router-link>
-                      <li>
-                        <a>Best way to include config.php</a>
+                      <li v-for="(item,index) in this.$store.state.all_data" :key="index">
+                        <a>{{item.subject}}</a>
                       </li>
-                      <li>
-                        <a>Need to know how to set ad listings to expire 30 days in php mysql?</a>
-                      </li>
-                      <li>
-                        <a>Dependency injection container vs composition root?</a>
-                      </li>
-                      <li>
-                        <a>How to split the following strings into prefix, range and postfix?</a>
-                      </li>
-                      <li>
-                        <a>How to split the following strings into prefix, range and postfix?</a>
-                      </li>
+                       
                     </ul>
                   </div>
                   <div class="col-lg-6">
@@ -148,24 +137,8 @@
                   </div>
                   <div class="col-lg-6">
                     <ul class="list">
-                      <li>
-                        <a>Convert one date time format into another in PHP custom function</a>
-                      </li>
-                      <li>
-                        <a>Best way to include config.php</a>
-                      </li>
-                      <li>
-                        <a>Need to know how to set ad listings to expire 30 days in php mysql?</a>
-                      </li>
-                      <li>
-                        <a>Dependency injection container vs composition root?</a>
-                      </li>
-                      <li>
-                        <a>How to split the following strings into prefix, range and postfix?</a>
-                      </li>
-                      <li>
-                        <a>How to split the following strings into prefix, range and postfix?</a>
-                      </li>
+                      
+                      
                     </ul>
                   </div>
                   <div class="col-lg-6">
@@ -202,8 +175,23 @@ export default {
         require('../assets/slide_2.jpg'),
         require('../assets/slide_3.jpg'),
         require('../assets/slide_4.jpg')
-      ]
+      ],
+      section1:{},
+      section2:{},
+      section3:{},
+      section4:{}
     }
+  },
+  mounted:function(){
+    var _this = this
+    _this.axios.post('http://localhost/biyesheji/searchdata.php').then(function(res){
+      var all_data = JSON.parse(res.data.all_data)
+      var latest_data = JSON.parse(res.data.latest_data)
+      var pops_data = JSON.parse(res.data.pops_data)
+      _this.$store.commit("SET_ALL_DATA", all_data);
+      _this.$store.commit("SET_LATEST_DATA", latest_data);
+      _this.$store.commit("SET_POPS_DATA", pops_data);
+    })
   }
  
 };

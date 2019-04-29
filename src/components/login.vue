@@ -87,8 +87,8 @@ export default {
 
       _this.submit = true;
       var params = new URLSearchParams();
-      params.append("username", this.$refs.username.value);
-      params.append("password", this.$refs.password.value);
+      params.append("username", _this.$refs.username.value);
+      params.append("password", _this.$refs.password.value);
       _this.axios
         .post("http://localhost/biyesheji/checklogin.php", params)
         .then(function(res) {

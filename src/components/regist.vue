@@ -88,16 +88,16 @@
                 </form> -->
                 <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="85px" class="demo-ruleForm">
                     <el-form-item label="用户名" prop="username">
-                        <el-input v-model="ruleForm.username"></el-input>
+                        <el-input v-model="ruleForm.username" ref="username"></el-input>
                     </el-form-item>
                     <el-form-item label="密码:" prop="pass">
-                        <el-input type="password" v-model="ruleForm.pass" autocomplete="off"></el-input>
+                        <el-input type="password" v-model="ruleForm.pass" ref="password" autocomplete="off"></el-input>
                     </el-form-item>
                     <el-form-item label="确认密码:" prop="checkPass">
-                        <el-input type="password" v-model="ruleForm.checkPass" autocomplete="off"></el-input>
+                        <el-input type="password" v-model="ruleForm.checkPass" ref="password_confirm" autocomplete="off"></el-input>
                     </el-form-item>
                     <el-form-item label="昵称" prop="nickname">
-                        <el-input v-model="ruleForm.nickname"></el-input>
+                        <el-input v-model="ruleForm.nickname" ref="nickname"></el-input>
                     </el-form-item>
                    <el-form-item label="邮箱" prop="email" 
                       :rules="[
@@ -105,7 +105,7 @@
                        { type: 'email', message: '请输入正确的邮箱地址', trigger: ['blur', 'change'] }
                       ]"
                     >
-                    <el-input type="email" v-model="ruleForm.email" autocomplete="off"></el-input>
+                    <el-input type="email" v-model="ruleForm.email" ref="email" autocomplete="off"></el-input>
                    </el-form-item>
                   <el-form-item>
                     <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
@@ -192,7 +192,7 @@ export default {
           callback();
         }
       };
-      var checkEmail = (rule, value, callback) => {
+      /*var checkEmail = (rule, value, callback) => {
         if (value === '') {
           callback(new Error('请输入邮箱！'));
         } else if (value !== this.ruleForm.pass) {
@@ -200,7 +200,7 @@ export default {
         } else {
           callback();
         }
-      };
+      };*/
       return {
         ruleForm: {
             username: '',
@@ -209,13 +209,18 @@ export default {
             nickname: '',
             email: ''
         },
+        show: {
+            message: '',
+            type: ''
+        },
         rules: {
             username: [
                 { required: true, message: '请输入用户名！', trigger: 'blur' },
                 { min: 5, max: 15, message: '长度在 5 到 15 个字符！', trigger: 'blur' }
             ],
             pass: [
-                {required: true, validator: validatePass, trigger: 'blur' }
+                {required: true, validator: validatePass, trigger: 'blur' },
+                { min: 5, max: 20, message: '密码长度在5到20个字符！', trigger: 'blur' }
             ],
             checkPass: [
                 { validator: validatePass2, trigger: 'blur', required: true}
@@ -229,15 +234,43 @@ export default {
     },
     methods: {
       submitForm(formName) {
-        this.$refs[formName].validate((valid) => {
+        var _this = this;
+        _this.$refs[formName].validate((valid) => {
           if (valid) {
-            alert('submit!');
+              var params = new URLSearchParams();
+              params.append("username", this.$refs.username.value);
+              params.append("password", this.$refs.password.value);
+              params.append("password_confirm", this.$refs.password_confirm.value);
+              params.append("nickname", this.$refs.nickname.value);
+              params.append("email", this.$refs.email.value);
+              _this.axios.post('http://localhost/biyesheji/newuser.php',params)
+                .then(function(res) {
+                  if(res.data.is_regist === true){
+                    if(res.data.message === '注册成功'){
+                        _this.show.message = '注册成功！请登陆！'
+                        _this.show.type = 'success'
+                    } 
+                  } else {
+                    _this.show.type = 'error'
+                    if(res.data.message === '用户名已被注册'){
+                       _this.show.message = '该用户名已被注册！'
+                    }
+                  }
+                    _this.open()
+                    _this.$router.push("Login");//跳转到登录界面
+                })
           } else {
-            //console.log('error submit!!');
             return false;
           }
         });
       },
+      open: function() {
+      var _this = this;
+      _this.$message({
+        message: _this.show.message,
+        type: _this.show.type
+      });
+    },
       resetForm(formName) {
         this.$refs[formName].resetFields();
       }
