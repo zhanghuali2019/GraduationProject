@@ -29,12 +29,10 @@
                   <div class="col-lg-6">
                     <ul class="list">
                       <router-link :to="{name:'Detail'}">
-                        <li>Convert one date time format into another in PHP custom function</li>
+                        <li v-for="(item,index) in this.$store.state.all_data" :key="index" v-if="item.section_id == 1">
+                          <a>{{item.subject}}</a>
+                        </li>
                       </router-link>
-                      <li v-for="(item,index) in this.$store.state.all_data" :key="index">
-                        <a>{{item.subject}}</a>
-                      </li>
-                       
                     </ul>
                   </div>
                   <div class="col-lg-6">
@@ -57,24 +55,11 @@
                   </div>
                   <div class="col-lg-6">
                     <ul class="list">
-                      <li>
-                        <a>Convert one date time format into another in PHP custom function</a>
-                      </li>
-                      <li>
-                        <a>Best way to include config.php</a>
-                      </li>
-                      <li>
-                        <a>Need to know how to set ad listings to expire 30 days in php mysql?</a>
-                      </li>
-                      <li>
-                        <a>Dependency injection container vs composition root?</a>
-                      </li>
-                      <li>
-                        <a>How to split the following strings into prefix, range and postfix?</a>
-                      </li>
-                      <li>
-                        <a>How to split the following strings into prefix, range and postfix?</a>
-                      </li>
+                      <router-link :to="{name:'Detail'}">
+                        <li v-for="(item,index) in this.$store.state.all_data" :key="index" v-if="item.section_id == 2">
+                          <a>{{item.subject}}</a>
+                        </li>
+                      </router-link>
                     </ul>
                   </div>
                   <div class="col-lg-6">
@@ -97,24 +82,11 @@
                   </div>
                   <div class="col-lg-6">
                     <ul class="list">
-                      <li>
-                        <a>Convert one date time format into another in PHP custom function</a>
-                      </li>
-                      <li>
-                        <a>Best way to include config.php</a>
-                      </li>
-                      <li>
-                        <a>Need to know how to set ad listings to expire 30 days in php mysql?</a>
-                      </li>
-                      <li>
-                        <a>Dependency injection container vs composition root?</a>
-                      </li>
-                      <li>
-                        <a>How to split the following strings into prefix, range and postfix?</a>
-                      </li>
-                      <li>
-                        <a>How to split the following strings into prefix, range and postfix?</a>
-                      </li>
+                      <router-link :to="{name:'Detail'}">
+                        <li v-for="(item,index) in this.$store.state.all_data" :key="index" v-if="item.section_id == 3">
+                          <a>{{item.subject}}</a>
+                        </li>
+                      </router-link>
                     </ul>
                   </div>
                   <div class="col-lg-6">
@@ -137,8 +109,11 @@
                   </div>
                   <div class="col-lg-6">
                     <ul class="list">
-                      
-                      
+                      <router-link :to="{name:'Detail'}">
+                        <li v-for="(item,index) in this.$store.state.all_data" :key="index" v-if="item.section_id == 4">
+                          <a>{{item.subject}}</a>
+                        </li>
+                      </router-link>
                     </ul>
                   </div>
                   <div class="col-lg-6">

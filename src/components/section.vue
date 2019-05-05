@@ -25,7 +25,7 @@
             <div class="section">
               <div class="block">
                 <div class="post">
-                  <div class="row">
+                  <div class="row" v-for="(item,index) in this.$store.state.all_data" :key="index" v-if="item.section_id == param">
                     <div class="col-md-2 hidden-xs hidden-sm">
                       <div class="avatar">
                         <img class="img-circle" src="../assets/2.jpg" alt>
@@ -33,86 +33,8 @@
                     </div>
                     <div class="col-md-10">
                       <div class="text">
-                        <h2>Dependency injection container vs composition root</h2>
-                        <p>Dependency injection container vs composition root>Dependency injection container vs composition root, Dependency injection container vs composition root>Dependency injection container vs composition root</p>
-                        <div class="meta">
-                          <div class="row">
-                            <div class="col-sm-6">
-                              <span>由 Dependency 发布于：2018-01-20</span>
-                            </div>
-                            <div class="col-sm-6">
-                              <span>浏览数：100</span>
-                              <span>回复数：99</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="post">
-                  <div class="row">
-                    <div class="col-md-2 hidden-xs hidden-sm">
-                      <div class="avatar">
-                        <img class="img-circle" src="../assets/2.jpg" alt>
-                      </div>
-                    </div>
-                    <div class="col-md-10">
-                      <div class="text">
-                        <h2>Dependency injection container vs composition root</h2>
-                        <p>Dependency injection container vs composition root>Dependency injection container vs composition root, Dependency injection container vs composition root>Dependency injection container vs composition root</p>
-                        <div class="meta">
-                          <div class="row">
-                            <div class="col-sm-6">
-                              <span>由 Dependency 发布于：2018-01-20</span>
-                            </div>
-                            <div class="col-sm-6">
-                              <span>浏览数：100</span>
-                              <span>回复数：99</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="post">
-                  <div class="row">
-                    <div class="col-md-2 hidden-xs hidden-sm">
-                      <div class="avatar">
-                        <img class="img-circle" src="../assets/2.jpg" alt>
-                      </div>
-                    </div>
-                    <div class="col-md-10">
-                      <div class="text">
-                        <h2>Dependency injection container vs composition root</h2>
-                        <p>Dependency injection container vs composition root>Dependency injection container vs composition root, Dependency injection container vs composition root>Dependency injection container vs composition root</p>
-                        <div class="meta">
-                          <div class="row">
-                            <div class="col-sm-6">
-                              <span>由 Dependency 发布于：2018-01-20</span>
-                            </div>
-                            <div class="col-sm-6">
-                              <span>浏览数：100</span>
-                              <span>回复数：99</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="post">
-                  <div class="row">
-                    <div class="col-md-2 hidden-xs hidden-sm">
-                      <div class="avatar">
-                        <img class="img-circle" src="../assets/2.jpg" alt>
-                      </div>
-                    </div>
-                    <div class="col-md-10">
-                      <div class="text">
-                        <h2>Dependency injection container vs composition root</h2>
-                        <p>Dependency injection container vs composition root>Dependency injection container vs composition root, Dependency injection container vs composition root>Dependency injection container vs composition root</p>
+                        <h2>{{item.subject}}</h2>
+                        <p>{{item.content}}</p>
                         <div class="meta">
                           <div class="row">
                             <div class="col-sm-6">
@@ -153,9 +75,18 @@
 <script>
 import New from "./new.vue";
 export default {
+  data:function(){
+    return{
+      param:'',
+    }
+  },
   name: "app",
   components: {
     New
+  },
+  created(){
+    console.log(this.$route.query.id)
+    this.param = this.$route.query.id
   }
 };
 </script>
