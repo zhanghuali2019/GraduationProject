@@ -8,16 +8,22 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@tinymce/tinymce-vue": "^2.0.0",
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
     "core-js": "^2.6.5",
     "element-ui": "^2.7.2",
+    "filter": "^0.1.1",
     "jquery": "^3.4.0",
     "layui": "^0.0.1",
+    "node-sass": "^4.12.0",
     "qs": "^6.7.0",
+    "sass-loader": "^7.1.0",
+    "tinymce": "^5.0.4",
     "vue": "^2.6.6",
     "vue-router": "^3.0.5",
-    "vuex": "^3.1.0"
+    "vuex": "^3.1.0",
+    "wangeditor": "^3.1.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.5.0",

@@ -64,27 +64,27 @@
                                 <ul class="list-inline navmenu nav justify-content-left">
                                     <li>
                                         <router-link to="/">
-                                            <a>Home</a>
+                                            <a>主页</a>
                                         </router-link>
                                     </li>
                                     <li>
                                         <router-link :to="{name:'section',query:{id:1}}">
-                                            <a>Backend</a>
+                                            <a>学习</a>
                                         </router-link>
                                     </li>
                                     <li>
                                         <router-link :to="{name:'section',query:{id:2}}">
-                                            <a>Frontend</a>
+                                            <a>生活</a>
                                         </router-link>
                                     </li>
                                     <li>
                                         <router-link :to="{name:'section',query:{id:3}}">
-                                            <a> Database </a>
+                                            <a> 社团 </a>
                                         </router-link>
                                     </li>
                                     <li>
                                         <router-link :to="{name:'section',query:{id:4}}">
-                                            <a>UI</a>
+                                            <a>兼职</a>
                                         </router-link>
                                     </li>
                                 </ul>

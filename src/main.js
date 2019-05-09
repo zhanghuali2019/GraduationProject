@@ -17,6 +17,7 @@ import Detail from './components/detail'
 import axios from 'axios'  //引入axios
 import qs from  'qs'
 
+
 Vue.prototype.axios = axios
 Vue.prototype.qs = qs
 Vue.config.productionTip = false

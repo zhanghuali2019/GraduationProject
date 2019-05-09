@@ -8,7 +8,7 @@
                                 <div class="crumbs">
                                     <a href="">首页</a>
                                     >
-                                    <span>新建帖子</span>
+                                    <span>详情</span>
                                 </div>
                             </div>
                             <div class="col-sm-5">
@@ -33,7 +33,7 @@
                                 <div class="col-xs-12 col-md-10">
                                     <div class="post">
                                         <div class="post_header clearfix">
-                                            <h2>Dependency injection container vs composition root</h2>
+                                            <h2>{{$route.query.item.subject}}</h2>
                                             <span>#1</span>
                                         </div>
                                         <div class="meta">
@@ -47,8 +47,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <img class="post_image" src="../assets/165431313.png" alt="">
-                                        <p>Dependency injection container vs composition root>Dependency injection container vs composition root, Dependency injection container vs composition root>Dependency injection container vs composition root</p>
+                                        <p>{{this.$route.query.item.content}}</p>
                                         <div class="post_menu">
                                             <a href="">回复</a> <a href="">编辑</a> <a href="">删除</a>
                                         </div>

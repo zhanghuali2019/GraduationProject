@@ -6,19 +6,19 @@
                         <div class="col-md-6 row-left">
                             <p>
                                 <router-link to="/">
-                                    <a class="row-left-a">Home</a>
+                                    <a class="row-left-a">主页</a>
                                 </router-link> / 
                                 <router-link :to="{name:'section',query:{id:1}}">
-                                    <a class="row-left-a">Backend</a>
+                                    <a class="row-left-a">学习</a>
                                 </router-link> / 
                                 <router-link :to="{name:'section',query:{id:2}}">
-                                    <a class="row-left-a">Frontend</a>
+                                    <a class="row-left-a">生活</a>
                                 </router-link> / 
                                 <router-link :to="{name:'section',query:{id:3}}">
-                                    <a class="row-left-a">Database</a>
+                                    <a class="row-left-a">社团</a>
                                 </router-link> / 
                                 <router-link :to="{name:'section',query:{id:1}}">
-                                    <a class="row-left-a">UI</a>
+                                    <a class="row-left-a">兼职</a>
                                 </router-link>
                             </p>
                         </div>

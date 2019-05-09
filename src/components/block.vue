@@ -20,19 +20,20 @@
                 <div class="row">
                   <div class="col-lg-12">
                     <div class="block_header">
-                      <h3 class="title">Backend</h3>
+                      <h3 class="title">学习</h3>
                       <router-link :to="{name:'section',query:{id:1}}">
-                        <a class="more" href>more</a>
+                        <a class="more" href>more>></a>
                       </router-link>
                     </div>
                   </div>
                   <div class="col-lg-6">
                     <ul class="list">
-                      <router-link :to="{name:'Detail'}">
-                        <li v-for="(item,index) in this.$store.state.all_data" :key="index" v-if="item.section_id == 1">
-                          <a>{{item.subject}}</a>
-                        </li>
-                      </router-link>
+                      <li v-for="(item,index) in this.$store.state.all_data" :key="index" v-if="item.section_id == 1">
+                          <router-link :to="{name:'Detail'}">
+                            <a>{{item.subject}}</a>
+                          </router-link>
+                      </li>
+                      
                     </ul>
                   </div>
                   <div class="col-lg-6">
@@ -47,19 +48,19 @@
                 <div class="row">
                   <div class="col-lg-12">
                     <div class="block_header">
-                      <h3 class="title">Frontend</h3>
+                      <h3 class="title">生活</h3>
                       <router-link :to="{name:'section',query:{id:2}}">
-                        <a class="more" href>more</a>
+                        <a class="more" href>more>></a>
                       </router-link>
                     </div>
                   </div>
                   <div class="col-lg-6">
                     <ul class="list">
-                      <router-link :to="{name:'Detail'}">
-                        <li v-for="(item,index) in this.$store.state.all_data" :key="index" v-if="item.section_id == 2">
+                      <li v-for="(item,index) in this.$store.state.all_data" :key="index" v-if="item.section_id == 2">
+                        <router-link :to="{name:'Detail'}">  
                           <a>{{item.subject}}</a>
-                        </li>
-                      </router-link>
+                        </router-link>
+                      </li> 
                     </ul>
                   </div>
                   <div class="col-lg-6">
@@ -74,19 +75,19 @@
                 <div class="row">
                   <div class="col-lg-12">
                     <div class="block_header">
-                      <h3 class="title">Database</h3>
+                      <h3 class="title">社团</h3>
                       <router-link :to="{name:'section',query:{id:3}}">
-                        <a class="more" href>more</a>
+                        <a class="more" href>more>></a>
                       </router-link>
                     </div>
                   </div>
                   <div class="col-lg-6">
                     <ul class="list">
-                      <router-link :to="{name:'Detail'}">
-                        <li v-for="(item,index) in this.$store.state.all_data" :key="index" v-if="item.section_id == 3">
+                      <li v-for="(item,index) in this.$store.state.all_data" :key="index" v-if="item.section_id == 3">
+                        <router-link :to="{name:'Detail',query:{item:item}}">
                           <a>{{item.subject}}</a>
-                        </li>
-                      </router-link>
+                        </router-link>
+                      </li>
                     </ul>
                   </div>
                   <div class="col-lg-6">
@@ -101,19 +102,20 @@
                 <div class="row">
                   <div class="col-lg-12">
                     <div class="block_header">
-                      <h3 class="title">UI</h3>
+                      <h3 class="title">兼职</h3>
                       <router-link :to="{name:'section',query:{id:4}}">
-                        <a class="more" href>more</a>
+                        <a class="more" href>more>></a>
                       </router-link>
                     </div>
                   </div>
                   <div class="col-lg-6">
                     <ul class="list">
-                      <router-link :to="{name:'Detail'}">
-                        <li v-for="(item,index) in this.$store.state.all_data" :key="index" v-if="item.section_id == 4">
+                      
+                      <li v-for="(item,index) in this.$store.state.all_data" :key="index" v-if="item.section_id == 4">
+                        <router-link :to="{name:'Detail'}">
                           <a>{{item.subject}}</a>
-                        </li>
-                      </router-link>
+                        </router-link>
+                      </li>
                     </ul>
                   </div>
                   <div class="col-lg-6">
