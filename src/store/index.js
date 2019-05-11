@@ -7,8 +7,9 @@ const state = {
   user: window.sessionStorage.getItem('user'),
   token: window.sessionStorage.getItem('token'),
   all_data: window.sessionStorage.getItem('all_data'),
-  latest_data:{},
-  pops_data: {}
+  latest_data:window.sessionStorage.getItem('latest_data'),
+  pops_data: window.sessionStorage.getItem('pops_data'),
+  thread: window.sessionStorage.getItem('thread')
 }
 const mutations = {
   //将token保存到sessionStorage里，token表示登陆状态
@@ -32,13 +33,19 @@ const mutations = {
   },
   SET_ALL_DATA: (state,data) => {
     state.all_data = data
-    window.sessionStorage.setItem('all_data', data)
+    window.sessionStorage.setItem('all_data', JSON.stringify(data))
   },
   SET_LATEST_DATA: (state,data) => {
     state.latest_data = data
+    window.sessionStorage.setItem('latest_data', JSON.stringify(data))
   },
   SET_POPS_DATA: (state,data) => {
     state.pops_data = data
+    window.sessionStorage.setItem('pops_data', JSON.stringify(data))
+  },
+  GET_THREAD:(state,data) => {
+    state.thread = data
+    window.sessionStorage.setItem('thread', JSON.stringify(data))
   }
 }
  
@@ -48,5 +55,4 @@ export default new Vuex.Store({
   state,
   mutations,
   actions
-
 })

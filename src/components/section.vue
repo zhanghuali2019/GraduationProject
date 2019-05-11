@@ -21,7 +21,7 @@
             </div>
             <div class="section">
               <div class="block">
-                <div class="post" v-for="(item,index) in $store.state.all_data" :key="index" v-if="item.section_id == $route.query.id">
+                <div class="post" v-for="(item,index) in all_data" :key="index" v-if="item.section_id == $route.query.id">
                   <div class="row">
                     <div class="col-md-2 hidden-xs hidden-sm">
                       <div class="avatar">
@@ -30,8 +30,10 @@
                     </div>
                     <div class="col-md-10">
                       <div class="text">
-                        <h2>{{item.subject}}</h2>
-                        <p>{{item.content}}</p>
+                        <router-link :to="{name:'Detail',query:{item:item}}">
+                          <h2>{{item.subject}}</h2>
+                          <p v-html="item.content"></p>
+                        </router-link>
                         <div class="meta">
                           <div class="row">
                             <div class="col-sm-6">
@@ -75,22 +77,26 @@ export default {
   data:function(){
     return{
       param:'',
-      all_data:{}
+      all_data: JSON.parse(this.$store.state.all_data)
     }
   },
   name: "app",
   components: {
     New
   },
-  filters:{
-      formatDate(time){
-      var data = new Date(time);
-      return formatDate(data,'yyyy-MM-dd hh:mm:ss');
-    }
- },
+  computed:{
+       getAllData:function(){
+           return JSON.parse(this.$store.state.all_data);
+       }
+   },
+   watch:{
+        getAllData(val) {
+            this.all_data = JSON.parse(val);
+        }
+   },
   created(){
     this.param = this.$route.query.id
-    console.log(this.param)
+    //this.all_data = JSON.parse(this.$store.state.all_data)
   }
 };
 </script>

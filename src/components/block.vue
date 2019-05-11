@@ -29,7 +29,7 @@
                   <div class="col-lg-6">
                     <ul class="list">
                       <li v-for="(item,index) in this.$store.state.all_data" :key="index" v-if="item.section_id == 1">
-                          <router-link :to="{name:'Detail'}">
+                          <router-link :to="{name:'Detail',query:{item:item}}">
                             <a>{{item.subject}}</a>
                           </router-link>
                       </li>
@@ -57,7 +57,7 @@
                   <div class="col-lg-6">
                     <ul class="list">
                       <li v-for="(item,index) in this.$store.state.all_data" :key="index" v-if="item.section_id == 2">
-                        <router-link :to="{name:'Detail'}">  
+                        <router-link :to="{name:'Detail',query:{item:item}}">  
                           <a>{{item.subject}}</a>
                         </router-link>
                       </li> 
@@ -111,8 +111,8 @@
                   <div class="col-lg-6">
                     <ul class="list">
                       
-                      <li v-for="(item,index) in this.$store.state.all_data" :key="index" v-if="item.section_id == 4">
-                        <router-link :to="{name:'Detail'}">
+                      <li v-for="(item,index) in all_data" :key="index" v-if="item.section_id == 4">
+                        <router-link :to="{name:'Detail',query:{item:item}}">
                           <a>{{item.subject}}</a>
                         </router-link>
                       </li>
@@ -153,12 +153,20 @@ export default {
         require('../assets/slide_3.jpg'),
         require('../assets/slide_4.jpg')
       ],
-      section1:{},
-      section2:{},
-      section3:{},
-      section4:{}
+      all_data:JSON.parse(this.$store.state.all_data)
     }
   },
+  computed:{
+       getAllData:function(){
+           return this.$store.state.all_data;
+       }
+      
+   },
+   watch:{
+        getAllData(val) {
+            this.all_data = val;
+        }
+   },
   mounted:function(){
     var _this = this
     _this.axios.post('http://localhost/biyesheji/searchdata.php').then(function(res){

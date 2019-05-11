@@ -114,7 +114,7 @@ export default{
                  _this.show.message = '验证码错误！'
                  _this.show.type = 'error'
             }
-            this.open();
+            _this.open();
         },
         timenow(){
             var date = new Date();
