@@ -6,7 +6,7 @@
           <div class="col-md-8">
             <div class="slider">
               <template>
-              <el-carousel :interval="5000" arrow="hover" autoplay="true">
+              <el-carousel :interval="5000" arrow="hover">
                 <el-carousel-item v-for="(item,index) in img" :key="index">
                   <h3>
                     <img :src="item" alt="轮播图">

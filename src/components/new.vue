@@ -22,16 +22,16 @@
 export default {
   data(){
     return{
-      latest_data:JSON.parse(this.$store.state.latest_data),
-      pops_data:JSON.parse(this.$store.state.pops_data)
+      latest_data:typeof this.$store.state.latest_data=="string" ? JSON.parse(this.$store.state.latest_data) : this.$store.state.latest_data,
+      pops_data:typeof this.$store.state.pops_data=="string" ? JSON.parse(this.$store.state.pops_data) : this.$store.state.pops_data
     }
   },
   computed:{
        getLatestData:function(){
-           return this.$store.state.latest_data;
+           return typeof this.$store.state.latest_data=="string" ? JSON.parse(this.$store.state.latest_data) : this.$store.state.latest_data
        },
        getPopsData:function(){
-           return this.$store.state.pops_data;
+           return typeof this.$store.state.pops_data=="string" ? JSON.parse(this.$store.state.pops_data) : this.$store.state.pops_data
        }
    },
    watch:{

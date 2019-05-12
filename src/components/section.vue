@@ -76,8 +76,8 @@ import New from "./new.vue";
 export default {
   data:function(){
     return{
-      param:'',
-      all_data: JSON.parse(this.$store.state.all_data)
+      param:this.$route.query.id,
+      all_data: typeof this.$store.state.all_data=="string" ? JSON.parse(this.$store.state.all_data) : this.$store.state.all_data
     }
   },
   name: "app",
@@ -86,12 +86,16 @@ export default {
   },
   computed:{
        getAllData:function(){
-           return JSON.parse(this.$store.state.all_data);
+          var val = this.$store.state.all_data
+          if(typeof val=="string")
+            return JSON.parse(val)
+          else 
+            return val;
        }
    },
    watch:{
         getAllData(val) {
-            this.all_data = JSON.parse(val);
+            this.all_data = val;
         }
    },
   created(){
