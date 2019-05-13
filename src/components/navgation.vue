@@ -50,7 +50,9 @@
                                         <router-link :to="{name:'Login'}">
                                             <a v-show="!token">登录</a>
                                         </router-link>
-                                        <a v-show="token">欢迎您,{{getUser}}</a>
+                                        <router-link :to="{name:'Usercenter'}">
+                                            <a v-show="token">欢迎您,{{getUser}}</a>
+                                        </router-link>
                                         <span>/</span>
                                         <router-link :to="{name:'Regist'}" v-show='!token'>
                                             <a>注册</a>

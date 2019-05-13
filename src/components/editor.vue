@@ -9,14 +9,15 @@ export default {
   name: 'editorElem',
   data () {
     return {
+      data:"",
       editor: null,
       editorContent: ''
     }
   },
-  props: ['catchData', 'content'],    // 接收父组件的方法
+  props: ['catchData', 'content', 'popdata'],    // 接收父组件的方法
   watch: {
     content () {
-      this.editor.txt.html(this.content)
+          this.editor.txt.html(this.content)
     }
   },
   mounted () {
@@ -94,7 +95,7 @@ export default {
 
     this.editor.create()     // 创建富文本实例
     if (!this.content) {
-      this.editor.txt.html('123')
+      this.editor.txt.html(this.popdata)
         
     }
     this.$emit('content',this.editor.txt.text());

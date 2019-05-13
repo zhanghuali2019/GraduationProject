@@ -13,6 +13,8 @@ import NewPost from './components/NewPost'
 import Login from './components/login'
 import Regist from './components/regist'
 import Detail from './components/detail'
+import Edit from './components/edit'
+import Usercenter from './components/usercenter'
 
 import axios from 'axios'  //引入axios
 import qs from  'qs'
@@ -35,7 +37,9 @@ const router = new Router({
     }},
     { path: '/Login', name:'Login', component: Login},
     { path: '/Regist', name:'Regist', component: Regist},
-    { path: '/Detail', name:'Detail', component: Detail}
+    { path: '/Detail', name:'Detail', component: Detail},
+    { path: '/Edit', name:'Edit', component: Edit},
+    { path: '/Usercenter', name:'Usercenter', component: Usercenter}
   ]
 })
 

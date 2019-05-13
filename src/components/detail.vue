@@ -14,7 +14,9 @@
             <div class="col-sm-5">
               <div class="post_btns">
                 <button type="button" class="btn btn-info" @click="reply">回复</button>&nbsp;
-                <button type="button" class="btn btn-warning">新建</button>
+                <router-link :to="{name:'NewPost', query: {id: this.$route.query.item.section_id}}">
+                  <button type="button" class="btn btn-warning">新建</button>
+                </router-link>
               </div>
             </div>
           </div>
@@ -49,7 +51,9 @@
                   <p v-html="item.content"></p>
                   <div class="post_menu">
                     <a href>回复 </a>
-                    <a href>编辑 </a>
+                    <router-link :to="{name:'Edit',query:{item:this.$route.query.item}}">
+                      <a href>编辑 </a>
+                    </router-link>
                     <a @click="deletePost">删除</a>
                   </div>
                 </div>
@@ -84,7 +88,7 @@
                   <div class="post_menu">
                     <a href>回复 </a>
                     <a href>编辑 </a>
-                    <a>删除</a>
+                    <a @click="deleteThread(item.id)">删除</a>
                   </div>
                 </div>
               </div>
@@ -270,7 +274,24 @@ export default {
           }
         });
       _this.open2();
-      window.reload()
+    },
+    deleteThread(id) {
+      var _this = this;
+      var params = new URLSearchParams();
+      params.append("id", id);
+      _this.axios
+        .post("http://localhost/biyesheji/deletethread.php", params)
+        .then(function(res) {
+          if (res.data.is_success === true) {
+            _this.show.message = "删除成功！";
+            _this.show.type = "success";
+          }
+          if (res.data.is_success === false) {
+            _this.show.message = "删除失败，请重试！";
+            _this.show.type = "error";
+          }
+        });
+      _this.open2();
     }
   },
   computed: {
