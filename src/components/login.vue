@@ -84,7 +84,6 @@ export default {
   methods: {
     login: function() {
       var _this = this;
-
       _this.submit = true;
       var params = new URLSearchParams();
       params.append("username", _this.$refs.username.value);

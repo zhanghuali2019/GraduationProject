@@ -23,12 +23,12 @@
               <div class="block">
                 <div class="post" v-for="(item,index) in all_data" :key="index" v-if="item.section_id == $route.query.id">
                   <div class="row">
-                    <div class="col-md-2 hidden-xs hidden-sm">
+                    <div class="col-md-4 hidden-xs hidden-sm">
                       <div class="avatar">
                         <img class="img-circle" src="../assets/2.jpg" alt>
                       </div>
                     </div>
-                    <div class="col-md-10">
+                    <div class="col-md-8">
                       <div class="text">
                         <router-link :to="{name:'Detail',query:{item:item}}">
                           <h2>{{item.subject}}</h2>

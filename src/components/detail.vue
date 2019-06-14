@@ -35,7 +35,7 @@
               <div class="col-xs-12 col-md-10">
                 <div class="post">
                   <div class="post_header clearfix">
-                    <h2>{{this.$route.query.subject}}</h2>
+                    <h2>{{this.$route.query.item.subject}}</h2>
                   </div>
                   <div class="meta">
                     <div class="row">
